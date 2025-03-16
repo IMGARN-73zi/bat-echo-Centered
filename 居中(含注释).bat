@@ -35,9 +35,11 @@ set /a "k2=!len1! - !k1! - !len2! - 2"
 
 ::生成符号字符串
 set "cols1="
-for /l %%i in (1,1,!k1!) do set "cols1=!cols1!!s!"
 set "cols2="
-for /l %%i in (1,1,!k2!) do set "cols2=!cols2!!s!"
+for /l %%i in (1,1,!k1!) do (
+    set "cols1=!cols1!!s!"
+    set "cols2=!cols2!!s!"
+)
 
 ::生成输出
 for /f %%a in ('echo prompt $H ^| cmd') do set "t1=%%a"
