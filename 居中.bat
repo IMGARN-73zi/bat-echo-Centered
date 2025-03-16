@@ -1,20 +1,14 @@
-::¹Ø±Õ»ØÏÔ
 @echo off
-::ÉèÖÃ±àÂë
 chcp 936 >nul
-::ÆôÓÃÑÓ³Ù±äÁ¿À©Õ¹
 setlocal enabledelayedexpansion
 
-:: ¶¨ÒåÒª¾ÓÖĞµÄÎÄ±¾ºÍ·ûºÅ
-set "str=×ÎÎíµÆ±àĞ´"
+set "str=å­œé›¾ç¯ç¼–å†™"
 set "t2=%str%"
-set "s=©¥"
+set "s=â”"
 
-::»ñÈ¡ÖÕ¶ËÁĞÊı
-for /f "delims=" %%a in ('mode con ^| findstr "ÁĞ"') do set "cols=%%a"
-set "len1=%cols:    ÁĞ:¡¡¡¡     =%"
+for /f "delims=" %%a in ('mode con ^| findstr "åˆ—"') do set "cols=%%a"
+set "len1=%cols:    åˆ—:ã€€ã€€     =%"
 
-::»ñÈ¡ÎÄ±¾×Ö·ûÊı
 set /a len2=-1
 :1
 if defined str (
@@ -23,33 +17,29 @@ if defined str (
     goto 1
 )
 
-::ÅĞ¶ÏÊÇ·ñÒç³ö
 set /a d=len1 - len2
 if !d! LEQ 4 (
-    goto Òç³ö
+    goto æº¢å‡º
 )
 
-::ÔËËãµÃµ½Á½²à²à¿ÕÁĞÊı
 set /a "k1=(!len1! - !len2! )/2 - 1"
 set /a "k2=!len1! - !k1! - !len2! - 2"
 
-::Éú³É·ûºÅ×Ö·û´®
 set "cols1="
 for /l %%i in (1,1,!k1!) do set "cols1=!cols1!!s!"
 set "cols2="
 for /l %%i in (1,1,!k2!) do set "cols2=!cols2!!s!"
 
-::Éú³ÉÊä³ö
 for /f %%a in ('echo prompt $H ^| cmd') do set "t1=%%a"
 set "t2=!cols1! !t2!!cols2!"
-goto Êä³ö
+goto è¾“å‡º
 
-:Òç³ö
+:æº¢å‡º
 set /a "len1=!len1!/2 *2 - 1"
 set "t1=!s!"
 for /l %%i in (1,1,%len1%) do set "t1=!t1!!s!"
 
-:Êä³ö
+:è¾“å‡º
 echo !t1!
 echo !t2!
 echo !t1!
